@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #ef4444;
+  --color-primary-hover: #dc2626;
+  
+  --color-background: var(--bg-main);
+  --color-card: var(--bg-card);
+  --color-foreground: var(--text-main);
+  --color-muted: var(--text-muted);
+  --color-border-subtle: var(--border-color);
+
+  --font-sans: 'Inter', sans-serif;
+}
+
+:root {
+  --bg-main: #000000;
+  --bg-card: #0a0a0a;
+  --text-main: #ffffff;
+  --text-muted: #9ca3af;
+  --border-color: #262626;
+}
+
+@layer base {
+  .glass-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  @keyframes scroll-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-50% - 1rem)); }
+  }
+  @keyframes scroll-right {
+    0% { transform: translateX(calc(-50% - 1rem)); }
+    100% { transform: translateX(0); }
+  }
+  
+  .animate-scroll-left {
+    animation: scroll-left 30s linear infinite;
+  }
+  .animate-scroll-left:hover {
+    animation-play-state: paused;
+  }
+  
+  .animate-scroll-right {
+    animation: scroll-right 30s linear infinite;
+  }
+  .animate-scroll-right:hover {
+    animation-play-state: paused;
+  }
+
+  body {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    overflow-x: hidden;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-main);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ef4444;
+}
